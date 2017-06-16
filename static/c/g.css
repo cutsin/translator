@@ -73,7 +73,7 @@ textarea.done {animation:blink2 3s ease-in-out}
 .tbody .th,
 .tbody .td {padding: .25em .5em;}
 
-.th.index {width: 8%;flex: 0 1 auto}
+.th.index {flex: 0 1 auto}
 .td:first-child {boder-left-width:0}
 
 .legend {margin: .25em 0 1em;text-align: right;}
