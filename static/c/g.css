@@ -29,7 +29,8 @@ textarea:focus:not([readonly]) {box-shadow:inset 3px 0 10px rgba(0,0,0,.2);}
 textarea:focus:not([readonly]) {background-color:rgba(0, 185, 255, 0.38)!important;resize:vertical}
 
 .legend > i.todo:before,
-textarea.todo {background-color: #5576af;color: #fff;}
+textarea.todo {background-color: #5576af;}
+textarea.todo:not(:focus) {color: #fff;}
 
 textarea[readonly],
 textarea.pending {background: rgba(0,0,0,.1) url(/i/1.gif) no-repeat center}
@@ -72,7 +73,7 @@ textarea.done {animation:blink2 3s ease-in-out}
 .tbody .th,
 .tbody .td {padding: .25em .5em;}
 
-.th.index {width: 20px;}
+.th.index {width: 8%;flex: 0 1 auto}
 .td:first-child {boder-left-width:0}
 
 .legend {margin: .25em 0 1em;text-align: right;}
