@@ -183,7 +183,7 @@ chokidar.watch(dir_locals, { ignoreInitial: true, usePolling: true })
 const log = (req, lang, key, old, val) => {
   const now = new Date()
   const fname = [now.getUTCFullYear(), now.getMonth(), now.getDate()].join('')
-  const logFile = path.resolve(__dirname, './static/log/useredit-'+ fname +'.md')
+  const logFile = path.resolve(__dirname, './static/logs/useredit-'+ fname +'.md')
   fs.appendFile(logFile, [
     new Date().toISOString(),
     '__' + lang + '__',
