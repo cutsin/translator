@@ -12,7 +12,7 @@ docker build --force-rm -t translator-image .
 
 ```bash
 cd Your_locales_folder
-docker run --privileged -dit -p 127.0.0.1:3018:80 -v ${PWD}:/locales --name translator1 translator-image
+docker run --privileged -dit -p 0.0.0.0:3018:80 -v ${PWD}:/locales --name translator1 translator-image
 ```
 
 ### Visit
