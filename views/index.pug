@@ -20,6 +20,7 @@ html
 
 			ul.table(v-show="def" :total="total[def]")
 				li.tr.thead
+					.th.index No.
 					.th
 						strong {{ langMap[def] }}
 						q.q {{def}}
@@ -28,6 +29,7 @@ html
 						strong(v-once) {{langMap[k]}}
 						q.q(v-once) {{k}}, {{total[k]}}
 				li.tr.tbody(v-for="v, k, index in locale[def]")
+					.th.index {{index}}
 					.th {{ origin ? k: v}}
 					textarea.td(v-for="lang in locales"
 						v-model="locale[lang][k]"
