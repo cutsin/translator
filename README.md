@@ -11,7 +11,8 @@ docker build --force-rm -t translator-image .
 ### Create Container
 
 ```bash
-docker run --privileged -dit -p 127.0.0.1:3018:80 -v ${PWD}:/locales --name Your_Locales_Name translator-image
+cd /Your_locales_folder
+docker run --privileged -dit -p 127.0.0.1:3018:80 -v ${PWD}:/locales --name Your_locales_name translator-image
 ```
 
 

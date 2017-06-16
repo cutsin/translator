@@ -1,12 +1,11 @@
 // routers
 const fs = require('fs')
 const path = require('path')
-const cwd = process.cwd()
 const through2 = require('through2')
 const _ = require('lodash')
 const chokidar = require('chokidar')
 
-const dir_locals = path.resolve(cwd, process.env.DIR || '/locales')
+const dir_locals = path.resolve(__dirname, process.env.DIR || '/locales')
 const def_locale = process.env.DEFAULT || 'en_US'
 let indent
 
@@ -45,7 +44,6 @@ const LOCALE = {
   // zh_CN: {}
 }
 const loadFile = (lang, fromWatch) => {
-  console.log(lang)
   let _path = filePath(lang)
   return new Promise((resolve, reject) => {
     fs.readFile(_path, {encoding: 'utf8'}, (err, cnt) => {
@@ -185,7 +183,7 @@ chokidar.watch(dir_locals, { ignoreInitial: true, usePolling: true })
 const log = (req, lang, key, old, val) => {
   const now = new Date()
   const fname = [now.getUTCFullYear(), now.getMonth(), now.getDate()].join('')
-  const logFile = path.resolve(cwd, './static/log/useredit-'+ fname +'.md')
+  const logFile = path.resolve(__dirname, './static/log/useredit-'+ fname +'.md')
   fs.appendFile(logFile, [
     new Date().toISOString(),
     '__' + lang + '__',

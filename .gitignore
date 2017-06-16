@@ -1,7 +1,4 @@
 node_modules
-log
-locales/*
-pm2.json
 
 *.tmp
 *.log

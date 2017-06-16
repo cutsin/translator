@@ -6,6 +6,7 @@ const express = require('express')
 const app = express()
 app.disable('x-powered-by')
 
+app.set('views', __dirname + '/views')
 app.set('view cache', false)
 app.set('view engine', 'pug')
 

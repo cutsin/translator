@@ -11,5 +11,10 @@
     "chokidar": "1.7.0",
     "through2": "2.0.3",
     "lodash": "4.17.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cutsin/translator.git"
+  },
+  "license": "MIT"
 }
