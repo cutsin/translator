@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'OpenSansLight';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSansLight'),
+       url(/f/OpenSansLight.woff2) format('woff2'),
+       url(/f/OpenSansLight.woff) format('woff'),
+       url(/f/OpenSansLight.ttf) format('truetype');
+}
+
+* {padding: 0;margin: 0;}
+body {padding: 5px 10px 20px;}
+body,
+input,
+textarea {font: 12px/1.5 'OpenSansLight', sans-serif}
+
+.q:not(:empty) {margin-left: .5em;font-weight: normal;}
+.q:not(:empty):before {content:'(';}
+.q:not(:empty):after {content:')';}
+
+
+#app.empty:before {content:'Loading...';top: 0;left: 0;bottom:0;right:0;position: absolute;font-size:alrger;background: rgba(255,255,255,.5);}
+
+
+textarea {transition:background-color .2s;will-change:background-color;resize:none}
+textarea:hover:not([readonly]),
+textarea:focus:not([readonly]) {box-shadow:inset 3px 0 10px rgba(0,0,0,.2);}
+/* textarea:hover {background-color:rgba(0,0,100,.05)} */
+textarea:focus:not([readonly]) {background-color:rgba(0, 185, 255, 0.38)!important;resize:vertical}
+
+.legend > i.todo:before,
+textarea.todo {background-color: #5576af;color: #fff;}
+
+textarea[readonly],
+textarea.pending {background: rgba(0,0,0,.1) url(/i/1.gif) no-repeat center}
+
+
+.legend > i.fail:before,
+textarea.fail {background-color:red!important}
+
+/* .legend > i.modified:before {background-color:rgba(205, 220, 57, 0.7); */
+.legend > i.modified:before {background-color:rgba(46, 208, 110, .9);}
+textarea.modified:not([class~='done']) {animation:blink 5s ease-in-out}
+@keyframes blink {
+  /* 0% {background-color:rgba(205, 220, 57, 0.7)} */
+  0% {background-color:rgba(46, 208, 110, .9)}
+  100% {background-color:inherit}
+}
+
+.legend > i.done:before {background-color:rgba(46, 208, 110, .7)}
+textarea.done {animation:blink2 3s ease-in-out}
+@keyframes blink2 {
+  0% {background-color:rgba(46, 208, 110, .9)}
+  100% {background-color:inherit}
+}
+
+
+.table {position: relative;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: flex;flex-direction: column;border:1px solid #ddd}
+.table:before {content:'Total keys: 'attr(total); top: -2em; position: absolute;}
+.tr {display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: flex;width: 100%;justify-content:center}
+.tbody.tr:nth-Child(odd) {background:#fcfcfc}
+
+.th,
+.td {
+  flex: 1 1 0;box-sizing:border-box;padding: .5em;border:1px solid #ddd;border-width:1px 0 0 1px;
+  line-height:1.5;white-space: normal;word-wrap:break-word;overflow-wrap: break-word;word-break:break-all;background:none;outline:none
+}
+.th {position: relative;font-weight: bold;background:#f6f6f6}
+.th:first-child {border-left: 0}
+.thead .tr {position: sticky}
+.thead .th {padding: .5em;border-top: 0}
+.tbody .th,
+.tbody .td {padding: .25em .5em;}
+
+.th.index {width: 20px;}
+.td:first-child {boder-left-width:0}
+
+.legend {margin: .25em 0 1em;text-align: right;}
+.legend:before {content:'Legend:'}
+.legend > i {margin-left: 1em;font-style: normal;}
+.legend > i:before {content:'';display: inline-block;width: 1em;height: 1em;border:1px solid #ddd;vertical-align: middle;margin: 0 .25em .25em 0;}
+.legend > i.todo:before {}
+
+.switch {position: absolute;right: 1em;cursor:pointer}
+.switch.on {color: green;}
