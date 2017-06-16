@@ -9,9 +9,6 @@ RUN \
 	&& npm i --quiet --global pm2 \
 	&& npm cache clean
 
-WORKDIR /srv/translator
-
-# ENTRYPOINT ["pm2", "start", "app.js", "-i", "1", "--no-daemon"]
-ENTRYPOINT pm2 start app.js -i 1 && /bin/sh
+ENTRYPOINT pm2 start /srv/translator/app.js -i 1 && /bin/sh
 
 EXPOSE 80
