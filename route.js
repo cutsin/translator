@@ -154,16 +154,28 @@ const loadFile = (lang, fromWatch) => {
   })
 }
 
+const sequence = {}
 const dump = (lang, json)=> {
   let _path = filePath(lang)
-  return new Promise((resolve, reject) => {
-    fs.writeFile(_path, JSON.stringify(json, null, indent), err => {
-      if (err) return reject(err)
-      resolve('ok')
-      console.log(err)
-      console.info('Dump', lang, 'ok.')
+  sequence[_path] || (sequence[_path] = {lock: false, data: []})
+  if (json) sequence[_path].data.push(JSON.stringify(json, null, indent))
+
+  const promise = new Promise((resolve, reject) => {
+    if (sequence[_path].lock) return resolve('ok')
+    sequence[_path].lock = true
+    fs.writeFile(_path, sequence[_path].data.shift(), err => {
+      sequence[_path].lock = false
+      if (sequence[_path].data.length) dump(_path)
+      if (err) {
+        reject(err)
+        console.error(err)
+      } else {
+        resolve('ok')
+        console.info('Dump', lang, 'ok.')
+      }
     })
   })
+  return promise
 }
 
 const init = () => {
